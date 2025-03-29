@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OCHEKA IMAGE GENERATION AI</title>
+    <STYLE>
+        hi{
+        text-align:center;
+        }
+        form{
+        margin:auto;
+        }
+        </STYLE></head>
+<body>
+    <h1>Generate an Image</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="prompt" placeholder="Enter a prompt" required>
+        <button type="submit">Generate</button>
+    </form>
+
+    <h2>Generated Images</h2>
+    {% for image in images %}
+        <div>
+            <p>{{ image.prompt }}</p>
+            <img src="{{ image.image.url }}" width="300px">
+        </div>
+    {% endfor %}
+</body>
+</html>
